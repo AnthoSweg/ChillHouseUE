@@ -1,0 +1,15 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\git\\chillhouseue\\chillhouse\\intermediate\\build\\win64\\unrealeditor\\inc\\chillhouse\\chillhousepawn.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\git\\chillhouseue\\chillhouse\\intermediate\\build\\win64\\chillhouseeditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\git\\chillhouseue\\chillhouse\\intermediate\\build\\win64\\unrealeditor\\development\\chillhouse\\definitions.chillhouse.h",
+            "d:\\git\\chillhouseue\\chillhouse\\source\\chillhouse\\chillhousepawn.h",
+            "d:\\git\\chillhouseue\\chillhouse\\intermediate\\build\\win64\\unrealeditor\\inc\\chillhouse\\chillhousepawn.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\git\\chillhouseue\\chillhouse\\intermediate\\build\\win64\\unrealeditor\\inc\\chillhouse\\chillhousegamemodebase.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\git\\chillhouseue\\chillhouse\\intermediate\\build\\win64\\chillhouseeditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\git\\chillhouseue\\chillhouse\\intermediate\\build\\win64\\unrealeditor\\development\\chillhouse\\definitions.chillhouse.h",
+            "d:\\git\\chillhouseue\\chillhouse\\source\\chillhouse\\chillhousegamemodebase.h",
+            "e:\\jeux egs\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "e:\\jeux egs\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "e:\\jeux egs\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\serverstatreplicator.generated.h",
+            "e:\\jeux egs\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\gamemodebase.generated.h",
+            "d:\\git\\chillhouseue\\chillhouse\\intermediate\\build\\win64\\unrealeditor\\inc\\chillhouse\\chillhousegamemodebase.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

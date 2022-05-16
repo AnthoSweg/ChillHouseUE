@@ -1,0 +1,19 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\git\\chillhouseue\\chillhouse\\source\\chillhouse\\furniture.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\git\\chillhouseue\\chillhouse\\intermediate\\build\\win64\\chillhouseeditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\git\\chillhouseue\\chillhouse\\intermediate\\build\\win64\\unrealeditor\\development\\chillhouse\\definitions.chillhouse.h",
+            "d:\\git\\chillhouseue\\chillhouse\\source\\chillhouse\\furniture.h",
+            "d:\\git\\chillhouseue\\chillhouse\\intermediate\\build\\win64\\unrealeditor\\inc\\chillhouse\\furniture.generated.h",
+            "e:\\jeux egs\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\components\\capsulecomponent.h",
+            "e:\\jeux egs\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\components\\shapecomponent.h",
+            "e:\\jeux egs\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\shapecomponent.generated.h",
+            "e:\\jeux egs\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\capsulecomponent.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "ChillHouse",
+			"Path": "D:\\GIT\\ChillHouseUE\\ChillHouse\\Source\\ChillHouse.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "ChillHouseEditor",
+			"Path": "D:\\GIT\\ChillHouseUE\\ChillHouse\\Source\\ChillHouseEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

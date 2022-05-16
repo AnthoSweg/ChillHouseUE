@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\ChillHouse.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\ChillHouse.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\ChillHouseEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Config\HoloLens">
+      <UniqueIdentifier>{4C8DD267-CDE7-336F-8602-F5F485D22BAB}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\HoloLens\HoloLensEngine.ini">
+      <Filter>Config\HoloLens</Filter>
+    </None>
+    <Filter Include="Source\ChillHouse">
+      <UniqueIdentifier>{1F12253E-FAFA-34D8-B3BA-00C7E1F9ACFC}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\ChillHouse\ChillHouse.Build.cs">
+      <Filter>Source\ChillHouse</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\ChillHouse\ChillHouse.cpp">
+      <Filter>Source\ChillHouse</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ChillHouse\ChillHouse.h">
+      <Filter>Source\ChillHouse</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\ChillHouse\ChillHouseController.cpp">
+      <Filter>Source\ChillHouse</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ChillHouse\ChillHouseController.h">
+      <Filter>Source\ChillHouse</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\ChillHouse\ChillHouseGameMode.cpp">
+      <Filter>Source\ChillHouse</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ChillHouse\ChillHouseGameMode.h">
+      <Filter>Source\ChillHouse</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\ChillHouse\ChillHouseGameModeBase.cpp">
+      <Filter>Source\ChillHouse</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ChillHouse\ChillHouseGameModeBase.h">
+      <Filter>Source\ChillHouse</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\ChillHouse\ChillHousePawn.cpp">
+      <Filter>Source\ChillHouse</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ChillHouse\ChillHousePawn.h">
+      <Filter>Source\ChillHouse</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\ChillHouse\Furniture.cpp">
+      <Filter>Source\ChillHouse</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ChillHouse\Furniture.h">
+      <Filter>Source\ChillHouse</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
