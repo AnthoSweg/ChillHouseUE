@@ -1,0 +1,161 @@
+﻿  Using bundled DotNet SDK
+  Log file: C:\Users\bross\AppData\Local\UnrealBuildTool\Log.txt
+  Using 'git status' to determine working set for adaptive non-unity build (D:\GIT\ChillHouseUE).
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-7728.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-7728.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-7763.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-7763.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-7833.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-7833.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-7987.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-7987.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-8110.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-8110.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-8122.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-8122.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-8554.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-8554.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-8975.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-8975.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-8984.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-8984.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9010.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9010.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9038.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9038.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9053.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9053.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9076.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9076.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9222.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9222.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9267.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9267.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9368.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9368.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9496.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9496.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9619.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9619.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9712.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9712.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9857.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9857.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9895.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9895.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9950.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9950.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9993.dll
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Binaries\Win64\UnrealEditor-ChillHouse-9993.pdb
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0088.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0123.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0150.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0171.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0189.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0193.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0217.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0399.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0405.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0409.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0460.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0499.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0556.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0617.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0652.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0792.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-0826.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-1123.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-1263.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-1274.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-1381.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-1456.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-1589.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-1669.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-2210.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-2424.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-2674.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-2712.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-2822.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-2968.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-3063.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-3161.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-3181.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-3263.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-3334.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-3359.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-3407.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-3455.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-3456.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-3487.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-3684.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-3715.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-3874.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-4026.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-4090.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-4152.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-4459.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-4694.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-4771.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-4798.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-4800.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5095.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5111.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5193.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5252.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5298.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5375.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5379.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5434.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5513.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5666.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5854.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5859.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5889.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5913.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5939.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-5959.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-6144.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-6272.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-6311.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-6871.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-7079.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-7310.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-7387.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-7465.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-7728.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-7763.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-7833.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-7987.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-8110.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-8122.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-8554.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-8975.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-8984.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9010.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9038.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9053.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9076.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9222.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9267.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9368.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9496.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9619.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9712.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9857.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9895.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9950.lib
+  Deleted hot-reload file: D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse-9993.lib
+  Building ChillHouseEditor...
+  Using Visual Studio 2022 14.31.31104 toolchain (C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+  Determining max actions to execute in parallel (4 physical cores, 4 logical cores)
+    Executing up to 4 processes, one per physical core
+    Requested 1,5 GB free memory per action, 3,99 GB available: limiting max parallel actions to 2
+  Building 4 actions with 2 processes...
+  [1/4] Compile ChillHousePawn.cpp
+  [2/4] Link UnrealEditor-ChillHouse.lib
+     Création de la bibliothèque D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse.lib et de l'objet D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse.exp
+  [3/4] Link UnrealEditor-ChillHouse.dll
+     Création de la bibliothèque D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse.suppressed.lib et de l'objet D:\GIT\ChillHouseUE\ChillHouse\Intermediate\Build\Win64\UnrealEditor\Development\ChillHouse\UnrealEditor-ChillHouse.suppressed.exp
+  [4/4] WriteMetadata ChillHouseEditor.target
+  Total time in Parallel executor: 21,99 seconds
+  Total execution time: 23,12 seconds

@@ -8,6 +8,7 @@
 #include "Math/Vector.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Kismet/GameplayStatics.h"
+#include "Camera/CameraComponent.h"
 
 // Sets default values
 AChillHousePawn::AChillHousePawn()
@@ -19,25 +20,13 @@ AChillHousePawn::AChillHousePawn()
 	Pivot->SetupAttachment(RootComponent);
 }
 
-// Called when the game starts or when spawned
-void AChillHousePawn::BeginPlay()
-{
-	Super::BeginPlay();
-
-	Controller = Cast<AChillHouseController>(GetController());
-}
-
-// Called every frame
-void AChillHousePawn::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-}
-
 // Called to bind functionality to input
 void AChillHousePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	PlayerInputComponent->BindAxis(TEXT("Rotation"), this, &AChillHousePawn::GetMouseXDelta);
+	PlayerInputComponent->BindAxis(TEXT("Zoom"), this, &AChillHousePawn::Zoom);
+	//PlayerInputComponent->BindAxis(TEXT("Rotation"), this, &AChillHousePawn::GetMouseXDelta);
+	//PlayerInputComponent->BindVectorAxis(TEXT("MousePan"), this, &AChillHousePawn::GetMousePan);
 	//PlayerInputComponent->BindAxis(TEXT("Rotation"), this, &APawn::AddControllerYawInput);
 
 	PlayerInputComponent->BindAction(TEXT("CTRL_Modifier"), EInputEvent::IE_Pressed, this, &AChillHousePawn::CTRLPressed);
@@ -48,17 +37,35 @@ void AChillHousePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	PlayerInputComponent->BindAction(TEXT("Secondary_Modifier"), EInputEvent::IE_Released, this, &AChillHousePawn::RightClickUnpressed);
 }
 
-void AChillHousePawn::GetMouseXDelta(float Delta)
+// Called when the game starts or when spawned
+void AChillHousePawn::BeginPlay()
 {
+	Super::BeginPlay();
+
+	Controller = Cast<AChillHouseController>(GetController());
+	CameraComponent = FindComponentByClass<UCameraComponent>();
+}
+
+// Called every frame
+void AChillHousePawn::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	float DeltaX, DeltaY;
+	Controller->GetInputMouseDelta(DeltaX, DeltaY);
 	//UE_LOG(LogTemp, Warning, TEXT("Delta : %f"), Delta);
 
 	if (bRightClickIsPressed && SelectedFurniture == nullptr)
 	{
-		RotateCamera(Delta);
+		RotateCamera(DeltaX, DeltaTime);
+	}
+	else if (bCTRLIsPressed && SelectedFurniture == nullptr)
+	{
+		PanCamera(DeltaX, DeltaY, DeltaTime);
 	}
 	else if (bRightClickIsPressed && SelectedFurniture != nullptr)
 	{
-		RotateFurniture(Delta);
+		RotateFurniture(DeltaX, DeltaTime);
 	}
 	else if (bLeftClickIsPressed)
 	{
@@ -66,15 +73,51 @@ void AChillHousePawn::GetMouseXDelta(float Delta)
 	}
 }
 
-void AChillHousePawn::RotateCamera(float Delta)
+//void AChillHousePawn::GetMouseXDelta(float Delta)
+//{
+//}
+//
+//void AChillHousePawn::GetMousePan(float DeltaX, float DeltaY)
+//{
+//	if (bCTRLIsPressed && SelectedFurniture == nullptr)
+//	{
+//		//PanCamera(Delta);
+//	}
+//}
+
+void AChillHousePawn::Zoom(float Delta)
 {
-	//UE_LOG(LogTemp, Warning, TEXT("Rotate camera %f"), Delta);
-	FRotator NewRotation;
-	NewRotation.Yaw += Delta;
-	Pivot->AddLocalRotation(NewRotation * GetWorld()->DeltaTimeSeconds * CameraRotationRate, false);
+	if (CameraComponent != nullptr)
+	{
+		FVector NewZoom = CameraComponent->GetRelativeLocation();
+		NewZoom.X += Delta * CameraZoomSpeed * GetWorld()->DeltaTimeSeconds;
+		//Clamp Value
+		if (NewZoom.X > CameraZoomMinMax.X) NewZoom.X = CameraZoomMinMax.X;
+		if (NewZoom.X < CameraZoomMinMax.Y) NewZoom.X = CameraZoomMinMax.Y;
+		CameraComponent->SetRelativeLocation(NewZoom, false);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("No CameraComponent set"));
+	}
 }
 
-void AChillHousePawn::RotateFurniture(float Delta)
+void AChillHousePawn::RotateCamera(float Delta, float DeltaTime)
+{
+	FRotator NewRotation;
+	NewRotation.Yaw += Delta * DeltaTime * CameraRotationRate;
+	Pivot->AddLocalRotation(NewRotation, false);
+}
+
+void AChillHousePawn::PanCamera(float DeltaX, float DeltaY, float DeltaTime)
+{
+	FVector NewLocation;
+	NewLocation.X += DeltaY * DeltaTime * CameraPanSpeed;
+	NewLocation.Y += DeltaX * DeltaTime * CameraPanSpeed;
+	Pivot->AddLocalOffset(NewLocation, false);
+}
+
+void AChillHousePawn::RotateFurniture(float Delta, float DeltaTime)
 {
 	if (SelectedFurniture != nullptr)
 	{
@@ -82,8 +125,8 @@ void AChillHousePawn::RotateFurniture(float Delta)
 
 		//UE_LOG(LogTemp, Warning, TEXT("Rotate furniture %f"), Delta);
 		FRotator NewRotation;
-		NewRotation.Yaw -= Delta;
-		SelectedFurniture->AddActorLocalRotation(NewRotation * GetWorld()->DeltaTimeSeconds * CameraRotationRate * 2, false);
+		NewRotation.Yaw -= Delta * DeltaTime * CameraRotationRate * 2;
+		SelectedFurniture->AddActorLocalRotation(NewRotation, false);
 	}
 }
 
@@ -98,7 +141,6 @@ void AChillHousePawn::MoveFurniture()
 			GetFurnitureOffset(HitResult);
 
 			SelectedFurniture->SetActorLocation(HitResult.Location + FurnitureLocationOffset);
-
 		}
 	}
 }
@@ -119,13 +161,9 @@ bool AChillHousePawn::GetFurnitureAtMouseLocation()
 				SelectedFurniture->SavePosAndRot();
 
 				//Get values to offset the cursor
-				//GetFurnitureOffset(HitResult);
 				FVector2D FurnitureLocationInScreenSpace;
 				FVector2D MouseLocation;
 				UGameplayStatics::ProjectWorldToScreen(Controller, SelectedFurniture->GetActorLocation()/* - FurnitureLocationOffset*/, FurnitureLocationInScreenSpace);
-				//Controller->GetMousePosition(MouseLocation.X, MouseLocation.Y);
-				//CursorLocationOffset = FurnitureLocationInScreenSpace - MouseLocation;
-				//Controller->SetMouseLocation(CursorLocationOffset.X + MouseLocation.X, CursorLocationOffset.Y + MouseLocation.Y);
 				Controller->SetMouseLocation(FurnitureLocationInScreenSpace.X, FurnitureLocationInScreenSpace.Y);
 
 				return true;
@@ -192,9 +230,7 @@ void AChillHousePawn::CTRLUnpressed()
 void AChillHousePawn::LeftClickPressed()
 {
 	bLeftClickIsPressed = true;
-	if (GetFurnitureAtMouseLocation()) {
-		UE_LOG(LogTemp, Warning, TEXT("Hit furniture = %s"), *SelectedFurniture->GetActorNameOrLabel());
-	}
+	GetFurnitureAtMouseLocation();
 }
 
 void AChillHousePawn::LeftClickUnpressed()

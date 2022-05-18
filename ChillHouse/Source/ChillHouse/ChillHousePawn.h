@@ -32,9 +32,12 @@ public:
 		FVector2D CursorLocationOffset;
 
 private:
-	void GetMouseXDelta(float Delta);
-	void RotateCamera(float Delta);
-	void RotateFurniture(float Delta);
+	//void GetMouseXDelta(float Delta);
+	//void GetMousePan();
+	void Zoom(float Delta);
+	void RotateCamera(float Delta, float DeltaTime);
+	void PanCamera(float DeltaX, float DeltaY, float DeltaTime);
+	void RotateFurniture(float Delta, float DeltaTime);
 	void MoveFurniture();
 	bool GetFurnitureAtMouseLocation();
 	void DeselectFurniture();
@@ -50,6 +53,7 @@ private:
 
 	class AChillHouseController* Controller;
 	class USceneComponent* Pivot;
+	class UCameraComponent* CameraComponent;
 
 	bool bCTRLIsPressed = false;
 	bool bLeftClickIsPressed = false;
@@ -59,6 +63,12 @@ private:
 
 	UPROPERTY(EditAnywhere)
 		float CameraRotationRate = 10.f;
+	UPROPERTY(EditAnywhere)
+		float CameraPanSpeed = 10.f;
+	UPROPERTY(EditAnywhere)
+		float CameraZoomSpeed = 10.f;
+	UPROPERTY(EditAnywhere)
+		FVector2D CameraZoomMinMax = (-1000.f, -4000.f);
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 		bool FollowCursor();
