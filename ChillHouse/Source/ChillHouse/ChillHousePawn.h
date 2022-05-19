@@ -60,13 +60,16 @@ private:
 	bool bRightClickIsPressed = false;
 
 	FVector FurnitureLocationOffset;
+	float CurrentZoom;
 
 	UPROPERTY(EditAnywhere)
-		float CameraRotationRate = 10.f;
+		float CameraRotationRate = 200.f;
 	UPROPERTY(EditAnywhere)
-		float CameraPanSpeed = 10.f;
+		float CameraPanSpeed = 1000.f;
 	UPROPERTY(EditAnywhere)
-		float CameraZoomSpeed = 10.f;
+		float CameraPanSpeedZoomMultiplier = 2.f;
+	UPROPERTY(EditAnywhere)
+		float CameraZoomSpeed = 5000.f;
 	UPROPERTY(EditAnywhere)
 		FVector2D CameraZoomMinMax = (-1000.f, -4000.f);
 

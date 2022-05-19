@@ -44,6 +44,7 @@ void AChillHousePawn::BeginPlay()
 
 	Controller = Cast<AChillHouseController>(GetController());
 	CameraComponent = FindComponentByClass<UCameraComponent>();
+	CurrentZoom = CameraComponent->GetRelativeLocation().X;
 }
 
 // Called every frame
@@ -73,27 +74,16 @@ void AChillHousePawn::Tick(float DeltaTime)
 	}
 }
 
-//void AChillHousePawn::GetMouseXDelta(float Delta)
-//{
-//}
-//
-//void AChillHousePawn::GetMousePan(float DeltaX, float DeltaY)
-//{
-//	if (bCTRLIsPressed && SelectedFurniture == nullptr)
-//	{
-//		//PanCamera(Delta);
-//	}
-//}
-
 void AChillHousePawn::Zoom(float Delta)
 {
 	if (CameraComponent != nullptr)
 	{
-		FVector NewZoom = CameraComponent->GetRelativeLocation();
-		NewZoom.X += Delta * CameraZoomSpeed * GetWorld()->DeltaTimeSeconds;
+		FVector NewZoom;
+		CurrentZoom += Delta * CameraZoomSpeed * GetWorld()->DeltaTimeSeconds;
 		//Clamp Value
-		if (NewZoom.X > CameraZoomMinMax.X) NewZoom.X = CameraZoomMinMax.X;
-		if (NewZoom.X < CameraZoomMinMax.Y) NewZoom.X = CameraZoomMinMax.Y;
+		if (CurrentZoom > CameraZoomMinMax.X) CurrentZoom = CameraZoomMinMax.X;
+		if (CurrentZoom < CameraZoomMinMax.Y) CurrentZoom = CameraZoomMinMax.Y;
+		NewZoom.X = CurrentZoom;
 		CameraComponent->SetRelativeLocation(NewZoom, false);
 	}
 	else
@@ -112,8 +102,15 @@ void AChillHousePawn::RotateCamera(float Delta, float DeltaTime)
 void AChillHousePawn::PanCamera(float DeltaX, float DeltaY, float DeltaTime)
 {
 	FVector NewLocation;
-	NewLocation.X += DeltaY * DeltaTime * CameraPanSpeed;
-	NewLocation.Y += DeltaX * DeltaTime * CameraPanSpeed;
+	//Stronger panning when camera is close
+	float PanMultiplier = (CameraZoomMinMax.Y - CameraZoomMinMax.X) / CurrentZoom;
+	UE_LOG(LogTemp, Error, TEXT("PanMultiplier original %f"), PanMultiplier);
+	TRange<float> InputRange = TRange<float>(((CameraZoomMinMax.Y - CameraZoomMinMax.X) / CameraZoomMinMax.X), ((CameraZoomMinMax.Y - CameraZoomMinMax.X) / CameraZoomMinMax.Y));
+	TRange<float> OutputRange = TRange<float>(CameraPanSpeedZoomMultiplier, 1.f);
+	PanMultiplier = FMath::GetMappedRangeValueClamped(InputRange, OutputRange, PanMultiplier);
+	UE_LOG(LogTemp, Error, TEXT("PanMultiplier remaped %f"), PanMultiplier);
+	NewLocation.X -= DeltaY * DeltaTime * CameraPanSpeed;
+	NewLocation.Y -= DeltaX * DeltaTime * CameraPanSpeed;
 	Pivot->AddLocalOffset(NewLocation, false);
 }
 
@@ -226,24 +223,20 @@ void AChillHousePawn::CTRLUnpressed()
 {
 	bCTRLIsPressed = false;
 }
-
 void AChillHousePawn::LeftClickPressed()
 {
 	bLeftClickIsPressed = true;
 	GetFurnitureAtMouseLocation();
 }
-
 void AChillHousePawn::LeftClickUnpressed()
 {
 	bLeftClickIsPressed = false;
 	DeselectFurniture();
 }
-
 void AChillHousePawn::RightClickPressed()
 {
 	bRightClickIsPressed = true;
 }
-
 void AChillHousePawn::RightClickUnpressed()
 {
 	bRightClickIsPressed = false;
