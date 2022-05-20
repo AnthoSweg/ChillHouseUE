@@ -31,6 +31,9 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 		FVector2D CursorLocationOffset;
 
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+		FRotator GetRotationFromXVector(FVector HitNormal);
+
 private:
 	//void GetMouseXDelta(float Delta);
 	//void GetMousePan();
@@ -71,7 +74,7 @@ private:
 	UPROPERTY(EditAnywhere)
 		float CameraZoomSpeed = 5000.f;
 	UPROPERTY(EditAnywhere)
-		FVector2D CameraZoomMinMax = (-1000.f, -4000.f);
+		FVector2D CameraZoomMinMax = FVector2D(-1000.f, -4000.f);
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 		bool FollowCursor();

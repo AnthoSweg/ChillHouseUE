@@ -25,9 +25,6 @@ void AChillHousePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	PlayerInputComponent->BindAxis(TEXT("Zoom"), this, &AChillHousePawn::Zoom);
-	//PlayerInputComponent->BindAxis(TEXT("Rotation"), this, &AChillHousePawn::GetMouseXDelta);
-	//PlayerInputComponent->BindVectorAxis(TEXT("MousePan"), this, &AChillHousePawn::GetMousePan);
-	//PlayerInputComponent->BindAxis(TEXT("Rotation"), this, &APawn::AddControllerYawInput);
 
 	PlayerInputComponent->BindAction(TEXT("CTRL_Modifier"), EInputEvent::IE_Pressed, this, &AChillHousePawn::CTRLPressed);
 	PlayerInputComponent->BindAction(TEXT("CTRL_Modifier"), EInputEvent::IE_Released, this, &AChillHousePawn::CTRLUnpressed);
@@ -54,7 +51,6 @@ void AChillHousePawn::Tick(float DeltaTime)
 
 	float DeltaX, DeltaY;
 	Controller->GetInputMouseDelta(DeltaX, DeltaY);
-	//UE_LOG(LogTemp, Warning, TEXT("Delta : %f"), Delta);
 
 	if (bRightClickIsPressed && SelectedFurniture == nullptr)
 	{
@@ -104,13 +100,11 @@ void AChillHousePawn::PanCamera(float DeltaX, float DeltaY, float DeltaTime)
 	FVector NewLocation;
 	//Stronger panning when camera is close
 	float PanMultiplier = (CameraZoomMinMax.Y - CameraZoomMinMax.X) / CurrentZoom;
-	UE_LOG(LogTemp, Error, TEXT("PanMultiplier original %f"), PanMultiplier);
 	TRange<float> InputRange = TRange<float>(((CameraZoomMinMax.Y - CameraZoomMinMax.X) / CameraZoomMinMax.X), ((CameraZoomMinMax.Y - CameraZoomMinMax.X) / CameraZoomMinMax.Y));
 	TRange<float> OutputRange = TRange<float>(CameraPanSpeedZoomMultiplier, 1.f);
 	PanMultiplier = FMath::GetMappedRangeValueClamped(InputRange, OutputRange, PanMultiplier);
-	UE_LOG(LogTemp, Error, TEXT("PanMultiplier remaped %f"), PanMultiplier);
-	NewLocation.X -= DeltaY * DeltaTime * CameraPanSpeed;
-	NewLocation.Y -= DeltaX * DeltaTime * CameraPanSpeed;
+	NewLocation.X -= DeltaY * DeltaTime * CameraPanSpeed * PanMultiplier;
+	NewLocation.Y -= DeltaX * DeltaTime * CameraPanSpeed * PanMultiplier;
 	Pivot->AddLocalOffset(NewLocation, false);
 }
 
@@ -120,7 +114,10 @@ void AChillHousePawn::RotateFurniture(float Delta, float DeltaTime)
 	{
 		Controller->SaveMousePosition();
 
-		//UE_LOG(LogTemp, Warning, TEXT("Rotate furniture %f"), Delta);
+		//Walls only furniture have their rotation set based on wall normal
+		if (SelectedFurniture->PlacementType == PlacementTypeEnum::OnWallsOnly)
+			return;
+
 		FRotator NewRotation;
 		NewRotation.Yaw -= Delta * DeltaTime * CameraRotationRate * 2;
 		SelectedFurniture->AddActorLocalRotation(NewRotation, false);
@@ -138,6 +135,14 @@ void AChillHousePawn::MoveFurniture()
 			GetFurnitureOffset(HitResult);
 
 			SelectedFurniture->SetActorLocation(HitResult.Location + FurnitureLocationOffset);
+
+			//Walls only furniture have their rotation set based on wall normal
+			if (SelectedFurniture->PlacementType == PlacementTypeEnum::OnWallsOnly)
+			{
+				if (!HitResult.ImpactNormal.Equals(FVector(0,-0,1)))
+					//Align furnitre X axis to the impact normal
+					SelectedFurniture->SetActorRotation(GetRotationFromXVector(HitResult.ImpactNormal), ETeleportType::None);
+			}
 		}
 	}
 }
@@ -192,8 +197,7 @@ void AChillHousePawn::DeselectFurniture()
 
 void AChillHousePawn::GetFurnitureOffset(FHitResult HitResult)
 {
-	FVector3d Upward;
-	Upward.Set(0, -0, 1);
+	FVector3d Upward = FVector3d(0, -0, 1);
 	if (!HitResult.Normal.Equals(Upward, .5f))
 	{
 		FVector Min;
@@ -247,5 +251,10 @@ void AChillHousePawn::RightClickUnpressed()
 bool AChillHousePawn::FollowCursor()
 {
 	return !(bRightClickIsPressed && SelectedFurniture != nullptr);
+}
+
+FRotator AChillHousePawn::GetRotationFromXVector_Implementation(FVector HitNormal)
+{
+	return FRotator();
 }
 

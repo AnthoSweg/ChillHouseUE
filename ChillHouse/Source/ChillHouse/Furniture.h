@@ -4,7 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+//#include "CustomEnum"
 #include "Furniture.generated.h"
+
+UENUM(BlueprintType)
+enum PlacementTypeEnum
+{
+	NoLimit			UMETA(DisplayName = "No limit"),
+	OnWallsOnly		UMETA(DisplayName = "Walls only"),
+	OnFloorOnly		UMETA(DisplayName = "Floor only"),
+};
 
 UCLASS()
 class CHILLHOUSE_API AFurniture : public AActor
@@ -13,7 +22,7 @@ class CHILLHOUSE_API AFurniture : public AActor
 
 public:
 	// Sets default values for this actor's properties
-	AFurniture();
+	AFurniture();	
 
 public:
 	UPROPERTY(EditDefaultsOnly)
@@ -23,6 +32,11 @@ public:
 	void SavePosAndRot();
 	void ResetPosAndRot();
 	bool LocationIsValid();
+
+	UPROPERTY(EditDefaultsOnly)
+		bool bTakeHitNormalRotation;
+	UPROPERTY(EditDefaultsOnly)
+		TEnumAsByte<PlacementTypeEnum> PlacementType;
 
 private:
 
