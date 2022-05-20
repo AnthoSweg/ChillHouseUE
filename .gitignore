@@ -73,3 +73,4 @@ ChillHouse/Plugins/*/Intermediate/*
 # Cache files for the editor to use
 ChillHouse/DerivedDataCache/*
 ChillHouse/Binaries/Win64/UnrealEditor-ChillHouse-0476.pdb
+ChillHouse/Intermediate/Build/SourceFileCache.bin
