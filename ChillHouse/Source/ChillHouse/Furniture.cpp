@@ -22,7 +22,6 @@ AFurniture::AFurniture()
 
 void AFurniture::SavePosAndRot()
 {
-	UE_LOG(LogTemp, Warning, TEXT("save location"));
 	LastValidPosition = GetActorLocation();
 	LastValidRotation = GetActorRotation();
 }
