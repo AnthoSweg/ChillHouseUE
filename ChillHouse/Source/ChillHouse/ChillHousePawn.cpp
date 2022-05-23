@@ -131,18 +131,42 @@ void AChillHousePawn::MoveFurniture()
 		FHitResult HitResult;
 		if (Controller->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult))
 		{
-			//Get the offset needed to place it against walls
-			GetFurnitureOffset(HitResult);
+			//Based on the desired surface, check if we aim at it, if not > return
+			switch (SelectedFurniture->PlacementType)
+			{
+			case PlacementTypeEnum::OnFloorOnly:
+
+				if (!HitResult.ImpactNormal.Equals(FVector(0, -0, 1)))
+					return;
+
+				break;
+
+			case PlacementTypeEnum::OnWallsOnly:
+
+				if (HitResult.ImpactNormal.Equals(FVector(0, -0, 1)))
+					return;
+
+				//Get the offset needed to place it against walls
+				GetFurnitureOffset(HitResult);
+
+				//Align furnitre X axis to the impact normal
+				SelectedFurniture->SetActorRotation(GetRotationFromXVector(HitResult.ImpactNormal), ETeleportType::None);
+
+
+				break;
+
+			case PlacementTypeEnum::NoLimit:
+
+				//Get the offset needed to place it against walls
+				GetFurnitureOffset(HitResult);
+
+				break;
+
+			default:
+				break;
+			}
 
 			SelectedFurniture->SetActorLocation(HitResult.Location + FurnitureLocationOffset);
-
-			//Walls only furniture have their rotation set based on wall normal
-			if (SelectedFurniture->PlacementType == PlacementTypeEnum::OnWallsOnly)
-			{
-				if (!HitResult.ImpactNormal.Equals(FVector(0,-0,1)))
-					//Align furnitre X axis to the impact normal
-					SelectedFurniture->SetActorRotation(GetRotationFromXVector(HitResult.ImpactNormal), ETeleportType::None);
-			}
 		}
 	}
 }
@@ -162,7 +186,7 @@ bool AChillHousePawn::GetFurnitureAtMouseLocation()
 				SelectedFurniture->Mesh->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
 				SelectedFurniture->SavePosAndRot();
 
-				//Get values to offset the cursor
+				//Get values to offset the cursor & ofset it
 				FVector2D FurnitureLocationInScreenSpace;
 				FVector2D MouseLocation;
 				UGameplayStatics::ProjectWorldToScreen(Controller, SelectedFurniture->GetActorLocation()/* - FurnitureLocationOffset*/, FurnitureLocationInScreenSpace);
@@ -204,6 +228,7 @@ void AChillHousePawn::GetFurnitureOffset(FHitResult HitResult)
 		FVector Max;
 		SelectedFurniture->Mesh->GetLocalBounds(Min, Max);
 
+		//TODO REWORK THIS
 		if (UKismetMathLibrary::Abs(HitResult.Normal.X) > UKismetMathLibrary::Abs(HitResult.Normal.Y))
 		{
 			FurnitureLocationOffset = HitResult.Normal * ((Max.X - Min.X) * .5f);
@@ -253,6 +278,7 @@ bool AChillHousePawn::FollowCursor()
 	return !(bRightClickIsPressed && SelectedFurniture != nullptr);
 }
 
+//The method is defined in blueprint
 FRotator AChillHousePawn::GetRotationFromXVector_Implementation(FVector HitNormal)
 {
 	return FRotator();
