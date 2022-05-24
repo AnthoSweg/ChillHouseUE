@@ -181,18 +181,22 @@ bool AChillHousePawn::GetFurnitureAtMouseLocation()
 			AFurniture* HitFurniture = Cast<AFurniture>(HitResult.GetActor());
 			if (HitFurniture != nullptr)
 			{
-				SelectedFurniture = HitFurniture;
-				//Change it's collision type so the raycast for position is not stop by our selected furniture
-				SelectedFurniture->Mesh->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
-				SelectedFurniture->SavePosAndRot();
+				if (HitFurniture->CanBeMoved())
+				{
+					SelectedFurniture = HitFurniture;
+					//Change it's collision type so the raycast for position is not stop by our selected furniture
+					SelectedFurniture->Mesh->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
+					//SelectedFurniture->SavePosAndRot();
+					SelectedFurniture->UnlinkFurniture();
 
-				//Get values to offset the cursor & ofset it
-				FVector2D FurnitureLocationInScreenSpace;
-				FVector2D MouseLocation;
-				UGameplayStatics::ProjectWorldToScreen(Controller, SelectedFurniture->GetActorLocation()/* - FurnitureLocationOffset*/, FurnitureLocationInScreenSpace);
-				Controller->SetMouseLocation(FurnitureLocationInScreenSpace.X, FurnitureLocationInScreenSpace.Y);
+					//Get values to offset the cursor & ofset it
+					FVector2D FurnitureLocationInScreenSpace;
+					FVector2D MouseLocation;
+					UGameplayStatics::ProjectWorldToScreen(Controller, SelectedFurniture->GetActorLocation()/* - FurnitureLocationOffset*/, FurnitureLocationInScreenSpace);
+					Controller->SetMouseLocation(FurnitureLocationInScreenSpace.X, FurnitureLocationInScreenSpace.Y);
 
-				return true;
+					return true;
+				}
 			}
 		}
 		return false;
@@ -204,10 +208,19 @@ void AChillHousePawn::DeselectFurniture()
 {
 	if (SelectedFurniture != nullptr)
 	{
+		//Check if we are putting the selected furniture on another one
+		FHitResult HitResult;
+		if (Controller->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult))
+		{
+			AFurniture* HitFurniture = Cast<AFurniture>(HitResult.GetActor());
+			if (HitFurniture != nullptr)
+				SelectedFurniture->LinkToAnotherFurniture(HitFurniture);
+		}
+
 		SelectedFurniture->Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 
-		if (!SelectedFurniture->LocationIsValid())
-			SelectedFurniture->ResetPosAndRot();
+		//if (!SelectedFurniture->LocationIsValid())
+		//	SelectedFurniture->ResetPosAndRot();
 
 		SelectedFurniture = nullptr;
 
@@ -228,15 +241,20 @@ void AChillHousePawn::GetFurnitureOffset(FHitResult HitResult)
 		FVector Max;
 		SelectedFurniture->Mesh->GetLocalBounds(Min, Max);
 
-		//TODO REWORK THIS
-		if (UKismetMathLibrary::Abs(HitResult.Normal.X) > UKismetMathLibrary::Abs(HitResult.Normal.Y))
-		{
-			FurnitureLocationOffset = HitResult.Normal * ((Max.X - Min.X) * .5f);
-		}
-		else if (UKismetMathLibrary::Abs(HitResult.Normal.X) < UKismetMathLibrary::Abs(HitResult.Normal.Y))
-		{
-			FurnitureLocationOffset = HitResult.Normal * ((Max.Y - Min.Y) * .5f);
-		}
+		FurnitureLocationOffset = HitResult.Normal * ((Max.Y - Min.Y) * .5f);
+
+		//double NormalX = UKismetMathLibrary::Abs(HitResult.Normal.X);
+		//double NormalY = UKismetMathLibrary::Abs(HitResult.Normal.Y);
+		//UE_LOG(LogTemp, Warning, TEXT("X : %f, Y : %f"), NormalX, NormalY);
+		////TODO REWORK THIS
+		//if (NormalX > NormalY)
+		//{
+		//	FurnitureLocationOffset = HitResult.Normal * ((Max.Y - Min.Y) * .5f);
+		//}
+		//else if (NormalX < NormalY)
+		//{
+		//	FurnitureLocationOffset = HitResult.Normal * ((Max.X - Min.X) * .5f);
+		//}
 	}
 	else
 	{

@@ -20,33 +20,58 @@ AFurniture::AFurniture()
 	Mesh->SetRelativeLocation(Zero);
 }
 
-void AFurniture::SavePosAndRot()
+//Don't move a furniture which contains others, avoid having floating things in the scene
+bool AFurniture::CanBeMoved()
 {
-	LastValidPosition = GetActorLocation();
-	LastValidRotation = GetActorRotation();
+	return FurnituresOnMe.IsEmpty();
 }
 
-void AFurniture::ResetPosAndRot()
+void AFurniture::LinkToAnotherFurniture(AFurniture* Furniture)
 {
-	UE_LOG(LogTemp, Warning, TEXT("reset location"));
-	SetActorLocationAndRotation(LastValidPosition, LastValidRotation);
-}
-
-bool AFurniture::LocationIsValid()
-{
-	UE_LOG(LogTemp, Warning, TEXT("check location"));
-	TArray<AActor*> actors;
-	Mesh->GetOverlappingActors(actors, nullptr);
-	UE_LOG(LogTemp, Warning, TEXT("%i"), actors.Num());
-	for (int i = 0; i < actors.Num(); i++)
+	if (Furniture != nullptr)
 	{
-		AFurniture* f = Cast<AFurniture>(actors[i]);
-		if (f != nullptr)
-		{
-			return false;
-		}
+		FurnitureImOn = Furniture;
+		FurnitureImOn->FurnituresOnMe.Add(this);
 	}
-
-	return true;
 }
+
+void AFurniture::UnlinkFurniture()
+{
+	if (FurnitureImOn != nullptr)
+	{
+		FurnitureImOn->FurnituresOnMe.Remove(this);
+		FurnitureImOn = nullptr;
+	}
+}
+
+//void AFurniture::SavePosAndRot()
+//{
+//	LastValidPosition = GetActorLocation();
+//	LastValidRotation = GetActorRotation();
+//}
+//
+//void AFurniture::ResetPosAndRot()
+//{
+//	UE_LOG(LogTemp, Warning, TEXT("reset location"));
+//	SetActorLocationAndRotation(LastValidPosition, LastValidRotation);
+//}
+//
+//bool AFurniture::LocationIsValid()
+//{
+//	TArray<AActor*> actors;
+//	Mesh->GetOverlappingActors(actors, nullptr);
+//	UE_LOG(LogTemp, Warning, TEXT("%i"), actors.Num());
+//	for (int i = 0; i < actors.Num(); i++)
+//	{
+//		AFurniture* f = Cast<AFurniture>(actors[i]);
+//		if (f != nullptr)
+//		{
+//			UE_LOG(LogTemp, Warning, TEXT("location is valid"));
+//			return false;
+//		}
+//	}
+//
+//	UE_LOG(LogTemp, Warning, TEXT("location is not valid"));
+//	return true;
+//}
 

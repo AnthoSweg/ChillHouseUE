@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-//#include "CustomEnum"
 #include "Furniture.generated.h"
 
 UENUM(BlueprintType)
@@ -29,17 +28,25 @@ public:
 		class UStaticMeshComponent* Mesh;
 	class USceneComponent* Pivot;
 
-	void SavePosAndRot();
-	void ResetPosAndRot();
-	bool LocationIsValid();
+	//void SavePosAndRot();
+	//void ResetPosAndRot();
+	//bool LocationIsValid();
+	bool CanBeMoved();
+	void LinkToAnotherFurniture(AFurniture* Furniture);
+	void UnlinkFurniture();
 
 	UPROPERTY(EditDefaultsOnly)
 		bool bTakeHitNormalRotation;
 	UPROPERTY(EditDefaultsOnly)
 		TEnumAsByte<PlacementTypeEnum> PlacementType;
 
+	UPROPERTY(EditDefaultsOnly)
+		int Cost;
+
 private:
 
 	FVector LastValidPosition;
 	FRotator LastValidRotation;
+	TArray<AFurniture*> FurnituresOnMe;
+	AFurniture* FurnitureImOn;
 };
