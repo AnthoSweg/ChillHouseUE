@@ -36,7 +36,7 @@ public:
 	void UnlinkFurniture();
 
 	UPROPERTY(EditDefaultsOnly)
-		bool bTakeHitNormalRotation;
+		bool bAlignWithWall;
 	UPROPERTY(EditDefaultsOnly)
 		TEnumAsByte<PlacementTypeEnum> PlacementType;
 

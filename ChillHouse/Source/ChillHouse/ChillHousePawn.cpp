@@ -150,6 +150,7 @@ void AChillHousePawn::MoveFurniture()
 				GetFurnitureOffset(HitResult);
 
 				//Align furnitre X axis to the impact normal
+				if(SelectedFurniture->bAlignWithWall)
 				SelectedFurniture->SetActorRotation(GetRotationFromXVector(HitResult.ImpactNormal), ETeleportType::None);
 
 
@@ -159,6 +160,10 @@ void AChillHousePawn::MoveFurniture()
 
 				//Get the offset needed to place it against walls
 				GetFurnitureOffset(HitResult);
+
+				//Align furnitre X axis to the impact normal
+				if (SelectedFurniture->bAlignWithWall)
+					SelectedFurniture->SetActorRotation(GetRotationFromXVector(HitResult.ImpactNormal), ETeleportType::None);
 
 				break;
 
