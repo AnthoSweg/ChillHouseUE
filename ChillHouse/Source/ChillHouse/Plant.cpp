@@ -2,6 +2,7 @@
 
 
 #include "Plant.h"
+#include "Pot.h"
 #include "ChillHouseGameMode.h"
 
 APlant::APlant()
@@ -18,8 +19,10 @@ void APlant::BeginPlay()
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bStartWithTickEnabled = true;
 
-	PotMesh->SetStaticMesh(GameMode->PotMeshes[0]);
-	Mesh->SetRelativeLocation(FVector(0, 0, PotMesh->Bounds.GetBox().Max.Z));
+	PotMesh->SetStaticMesh(GameMode->Pots[0].Mesh);
+	float PotHeight = PotMesh->Bounds.BoxExtent.Z;
+	Mesh->SetRelativeLocation(FVector(0, 0, PotHeight));
+	UE_LOG(LogTemp, Warning, TEXT("%f"), PotHeight);
 }
 
 void APlant::Tick(float DeltaTime)
@@ -38,5 +41,6 @@ void APlant::SwitchPot(int index)
 void APlant::ChangePotSize(TEnumAsByte<Size> NewSize)
 {
 	PotSize = NewSize;
+	UE_LOG(LogTemp, Warning, TEXT("%f"), PotMesh->Bounds.GetBox().Max.Z);
 	Mesh->SetRelativeLocation(FVector(0, 0, (uint8)NewSize * PotMesh->Bounds.GetBox().Max.Z));
 }

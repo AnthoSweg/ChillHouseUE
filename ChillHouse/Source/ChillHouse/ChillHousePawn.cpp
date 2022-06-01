@@ -4,6 +4,7 @@
 #include "ChillHousePawn.h"
 #include "ChillHouseController.h"
 #include "Furniture.h"
+#include "Plant.h"
 #include "Input/Events.h"
 #include "Math/Vector.h"
 #include "Kismet/KismetMathLibrary.h"
@@ -267,6 +268,24 @@ void AChillHousePawn::GetFurnitureOffset(FHitResult HitResult)
 	}
 }
 
+void AChillHousePawn::AccessPlantMenu()
+{
+	UE_LOG(LogTemp, Warning, TEXT("acess plant menu"));
+	if (Controller != nullptr)
+	{
+		FHitResult HitResult;
+		if (Controller->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult))
+		{
+			APlant* HitPlant = Cast<APlant>(HitResult.GetActor());
+			if (HitPlant != nullptr)
+			{
+				Controller->OpenPlantMenu(HitPlant);
+			}
+
+		}
+	}
+}
+
 void AChillHousePawn::CTRLPressed()
 {
 	bCTRLIsPressed = true;
@@ -288,11 +307,18 @@ void AChillHousePawn::LeftClickUnpressed()
 void AChillHousePawn::RightClickPressed()
 {
 	bRightClickIsPressed = true;
+	RightClickPressedTime = GetWorld()->GetTimeSeconds();
 }
 void AChillHousePawn::RightClickUnpressed()
 {
 	bRightClickIsPressed = false;
 
+	float UnpressedTime = GetWorld()->GetTimeSeconds();
+	UE_LOG(LogTemp, Warning, TEXT("%f"), UnpressedTime - RightClickPressedTime);
+	if (UnpressedTime - RightClickPressedTime < .3f)
+	{
+		AccessPlantMenu();
+	}
 	Controller->ResetMousePosition();
 }
 

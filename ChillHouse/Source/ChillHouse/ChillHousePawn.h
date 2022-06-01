@@ -45,6 +45,7 @@ private:
 	bool GetFurnitureAtMouseLocation();
 	void DeselectFurniture();
 	void GetFurnitureOffset(FHitResult HitResult);
+	void AccessPlantMenu();
 
 	void CTRLPressed();
 	void CTRLUnpressed();
@@ -52,6 +53,8 @@ private:
 	void LeftClickPressed();
 	void RightClickPressed();
 	void RightClickUnpressed();
+	//Save time to know if it's a long press or a click
+	float RightClickPressedTime;
 
 
 	class AChillHouseController* Controller;

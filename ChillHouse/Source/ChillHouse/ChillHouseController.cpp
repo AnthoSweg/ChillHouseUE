@@ -2,12 +2,13 @@
 
 
 #include "ChillHouseController.h"
+#include "Plant.h"
 #include "Blueprint/UserWidget.h"
 
 void AChillHouseController::BeginPlay()
 {
 	Super::BeginPlay();
-	//SetShowMouseCursor(true);
+	PlantMenu = CreateWidget(this, PlantMenuClass);
 	HUD = CreateWidget(this, HUDClass);
 	if (HUD != nullptr)
 	{
@@ -22,7 +23,6 @@ void AChillHouseController::SaveMousePosition()
 	if (MouseCoordsOnClick.X == -1)
 	{
 		GetMousePosition(MouseCoordsOnClick.X, MouseCoordsOnClick.Y);
-		//UE_LOG(LogTemp, Warning, TEXT("Mouse pos saved : %f,%f"), MouseCoordsOnClick.X, MouseCoordsOnClick.Y);
 	}
 }
 
@@ -31,10 +31,17 @@ void AChillHouseController::ResetMousePosition()
 	//Check to do it only once
 	if (MouseCoordsOnClick.X != -1)
 	{
-		//UE_LOG(LogTemp, Warning, TEXT("Mouse pos set : %f,%f"), MouseCoordsOnClick.X, MouseCoordsOnClick.Y);
 		SetMouseLocation(MouseCoordsOnClick.X, MouseCoordsOnClick.Y);
-		//GetMousePosition(MouseCoordsOnClick.X, MouseCoordsOnClick.Y);
-		//UE_LOG(LogTemp, Warning, TEXT("New mouse pos : %f,%f"), MouseCoordsOnClick.X, MouseCoordsOnClick.Y);
 		MouseCoordsOnClick.X = -1;
+	}
+}
+
+void AChillHouseController::OpenPlantMenu(APlant* _Plant)
+{
+	UE_LOG(LogTemp, Warning, TEXT("open plant menu"));
+	if (PlantMenu != nullptr)
+	{
+		PlantMenu->AddToViewport();
+		Plant = _Plant;
 	}
 }

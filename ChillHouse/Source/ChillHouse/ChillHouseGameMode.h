@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "Pot.h"
 #include "ChillHouseGameMode.generated.h"
 
 UCLASS()
@@ -16,8 +17,8 @@ public:
 	UFUNCTION(BlueprintPure, BlueprintCallable)
 	float GetCurrency();
 
-	UPROPERTY(EditDefaultsOnly)
-	TArray<class UStaticMesh*> PotMeshes;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FPot> Pots;
 
 private:
 	float Currency;

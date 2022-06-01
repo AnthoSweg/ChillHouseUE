@@ -9,6 +9,8 @@
 /**
  * 
  */
+class APlant;
+
 UCLASS()
 class CHILLHOUSE_API AChillHouseController : public APlayerController
 {
@@ -21,14 +23,21 @@ private:
 
 	UPROPERTY(EditAnywhere)
 		TSubclassOf<class UUserWidget> HUDClass;
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<class UUserWidget> PlantMenuClass;
 
 	UPROPERTY()
 		UUserWidget* HUD;
+
+	UPROPERTY()
+		UUserWidget* PlantMenu;
 
 public :
 
 	void SaveMousePosition();
 	void ResetMousePosition();
+	void OpenPlantMenu(APlant* Plant);
 
 	FVector2D MouseCoordsOnClick;
+	APlant* Plant;
 };
