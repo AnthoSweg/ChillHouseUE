@@ -38,10 +38,10 @@ void AChillHouseController::ResetMousePosition()
 
 void AChillHouseController::OpenPlantMenu(APlant* _Plant)
 {
-	UE_LOG(LogTemp, Warning, TEXT("open plant menu"));
 	if (PlantMenu != nullptr)
 	{
 		PlantMenu->AddToViewport();
 		Plant = _Plant;
+		SetShowMouseCursor(true);
 	}
 }

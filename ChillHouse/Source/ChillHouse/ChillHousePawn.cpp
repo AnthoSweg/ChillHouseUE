@@ -192,6 +192,10 @@ bool AChillHousePawn::GetFurnitureAtMouseLocation()
 					SelectedFurniture = HitFurniture;
 					//Change it's collision type so the raycast for position is not stop by our selected furniture
 					SelectedFurniture->Mesh->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
+					//Also change pot mesh collision if it's a plant
+					APlant* Plant = Cast<APlant>(SelectedFurniture);
+					if(Plant != nullptr)
+						Plant->PotMesh->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
 					//SelectedFurniture->SavePosAndRot();
 					SelectedFurniture->UnlinkFurniture();
 
@@ -224,6 +228,10 @@ void AChillHousePawn::DeselectFurniture()
 		}
 
 		SelectedFurniture->Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+		//Also change pot mesh collision if it's a plant
+		APlant* Plant = Cast<APlant>(SelectedFurniture);
+		if (Plant != nullptr)
+			Plant->PotMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 
 		//if (!SelectedFurniture->LocationIsValid())
 		//	SelectedFurniture->ResetPosAndRot();
@@ -270,7 +278,6 @@ void AChillHousePawn::GetFurnitureOffset(FHitResult HitResult)
 
 void AChillHousePawn::AccessPlantMenu()
 {
-	UE_LOG(LogTemp, Warning, TEXT("acess plant menu"));
 	if (Controller != nullptr)
 	{
 		FHitResult HitResult;
@@ -314,7 +321,6 @@ void AChillHousePawn::RightClickUnpressed()
 	bRightClickIsPressed = false;
 
 	float UnpressedTime = GetWorld()->GetTimeSeconds();
-	UE_LOG(LogTemp, Warning, TEXT("%f"), UnpressedTime - RightClickPressedTime);
 	if (UnpressedTime - RightClickPressedTime < .3f)
 	{
 		AccessPlantMenu();

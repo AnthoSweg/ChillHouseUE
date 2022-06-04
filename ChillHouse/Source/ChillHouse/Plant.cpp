@@ -20,9 +20,10 @@ void APlant::BeginPlay()
 	PrimaryActorTick.bStartWithTickEnabled = true;
 
 	PotMesh->SetStaticMesh(GameMode->Pots[0].Mesh);
-	float PotHeight = PotMesh->Bounds.BoxExtent.Z;
-	Mesh->SetRelativeLocation(FVector(0, 0, PotHeight));
-	UE_LOG(LogTemp, Warning, TEXT("%f"), PotHeight);
+	Mesh->SetRelativeLocation(FVector(0, 0, GameMode->Pots[0].Height));
+
+	PotSize = Size::Medium;
+	PotIndex = 0;
 }
 
 void APlant::Tick(float DeltaTime)
@@ -34,13 +35,36 @@ void APlant::Tick(float DeltaTime)
 	}
 }
 
-void APlant::SwitchPot(int index)
+void APlant::ChangePot(bool GetNextOne)
 {
+	PotIndex += GetNextOne ? 1 : -1;
+	if (PotIndex>GameMode->Pots.Num()-1)
+		PotIndex = 0;
+	if (PotIndex < 0)
+		PotIndex = GameMode->Pots.Num() - 1;
+
+	SwitchPot(GameMode->Pots[PotIndex]);
 }
 
-void APlant::ChangePotSize(TEnumAsByte<Size> NewSize)
+void APlant::SwitchPot(FPot NewPot)
 {
+	Pot = NewPot;
+	PotMesh->SetStaticMesh(Pot.Mesh);
+	RelocatePlant();
+}
+
+void APlant::ChangePotSize(int byte)
+{
+	TEnumAsByte<Size> NewSize = (TEnumAsByte<Size>)byte;
+	if (PotSize == NewSize)
+		return;
+
 	PotSize = NewSize;
-	UE_LOG(LogTemp, Warning, TEXT("%f"), PotMesh->Bounds.GetBox().Max.Z);
-	Mesh->SetRelativeLocation(FVector(0, 0, (uint8)NewSize * PotMesh->Bounds.GetBox().Max.Z));
+	PotMesh->SetRelativeScale3D(FVector((uint8)PotSize) * .5f + .5f);
+	RelocatePlant();
+}
+
+void APlant::RelocatePlant()
+{
+	Mesh->SetRelativeLocation(FVector(0, 0, ((uint8)PotSize * .5f + .5f) * Pot.Height));
 }

@@ -4,14 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "Furniture.h"
+#include "Pot.h"
 #include "Plant.generated.h"
 
 UENUM(BlueprintType)
 enum Size
 {
-	Small		UMETA(DisplayName = "Small"),
-	Medium		UMETA(DisplayName = "Medium"),
-	Large		UMETA(DisplayName = "Large"),
+	Small	UMETA(DisplayName = "Small"),
+	Medium	UMETA(DisplayName = "Medium"),
+	Large	UMETA(DisplayName = "Large"),
 };
 UENUM(BlueprintType)
 enum LightLevel
@@ -36,6 +37,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+		FString PlantName;
+
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
 		int CurrencyGainedPerSeconds;
 
 	UPROPERTY(EditDefaultsOnly)
@@ -43,8 +47,15 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 		TEnumAsByte<LightLevel> LightNeeded;
 
-	void SwitchPot(int index);
-	void ChangePotSize(TEnumAsByte<Size> NewSize);
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+		class UStaticMeshComponent* PotMesh;
+
+	UFUNCTION(BlueprintCallable)
+		void ChangePotSize(int byte);
+	UFUNCTION(BlueprintCallable)
+		void ChangePot(bool GetNextOne);
+	void SwitchPot(FPot NewPot);
+	void RelocatePlant();
 
 private:
 
@@ -53,8 +64,6 @@ private:
 	TEnumAsByte<LightLevel> LightReceived;
 	TEnumAsByte<Size> PotSize;
 
-	UPROPERTY(EditDefaultsOnly)
-	class UStaticMeshComponent* PotMesh;
-	
+	FPot Pot;
 	int PotIndex;
 };

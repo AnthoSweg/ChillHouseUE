@@ -39,5 +39,6 @@ public :
 	void OpenPlantMenu(APlant* Plant);
 
 	FVector2D MouseCoordsOnClick;
+	UPROPERTY(BlueprintReadWrite)
 	APlant* Plant;
 };
