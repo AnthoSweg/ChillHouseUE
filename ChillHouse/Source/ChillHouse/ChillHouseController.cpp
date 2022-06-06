@@ -42,6 +42,5 @@ void AChillHouseController::OpenPlantMenu(APlant* _Plant)
 	{
 		PlantMenu->AddToViewport();
 		Plant = _Plant;
-		SetShowMouseCursor(true);
 	}
 }

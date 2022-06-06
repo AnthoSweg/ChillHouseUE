@@ -66,4 +66,13 @@ private:
 
 	FPot Pot;
 	int PotIndex;
+
+	float WaterLevel;
+	UPROPERTY(EditDefaultsOnly)
+		float WaterNeeded;
+
+	UFUNCTION(BlueprintCallable)
+		void WaterPlant();
+
+	bool IsInGoodCondition();
 };

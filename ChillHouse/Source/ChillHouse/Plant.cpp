@@ -24,21 +24,24 @@ void APlant::BeginPlay()
 
 	PotSize = Size::Medium;
 	PotIndex = 0;
+	WaterLevel = WaterNeeded;
 }
 
 void APlant::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	if (PotSize == PlantSize && LightNeeded == LightReceived)
+	if (IsInGoodCondition())
 	{
 		GameMode->GainCurrency(CurrencyGainedPerSeconds * DeltaTime);
 	}
+
+	WaterLevel -= .5f;
 }
 
 void APlant::ChangePot(bool GetNextOne)
 {
 	PotIndex += GetNextOne ? 1 : -1;
-	if (PotIndex>GameMode->Pots.Num()-1)
+	if (PotIndex > GameMode->Pots.Num() - 1)
 		PotIndex = 0;
 	if (PotIndex < 0)
 		PotIndex = GameMode->Pots.Num() - 1;
@@ -67,4 +70,23 @@ void APlant::ChangePotSize(int byte)
 void APlant::RelocatePlant()
 {
 	Mesh->SetRelativeLocation(FVector(0, 0, ((uint8)PotSize * .5f + .5f) * Pot.Height));
+}
+
+void APlant::WaterPlant()
+{
+	WaterLevel += 10.f;
+}
+
+bool APlant::IsInGoodCondition()
+{
+	if ((uint8)LightReceived < (uint8)LightNeeded)
+		return false;
+
+	if ((uint8)PotSize < (uint8)PlantSize)
+		return false;
+
+	if (WaterLevel < WaterNeeded - 40 && WaterLevel > WaterNeeded + 20)
+		return false;
+
+	return true;
 }
