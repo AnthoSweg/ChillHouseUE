@@ -46,6 +46,9 @@ private:
 	void DeselectFurniture();
 	void GetFurnitureOffset(FHitResult HitResult);
 	void AccessPlantMenu();
+	void ZoomOnPlant(class APlant* Plant);
+	UFUNCTION(BlueprintCallable)
+	void Unzoom();
 
 	void CTRLPressed();
 	void CTRLUnpressed();
@@ -83,4 +86,7 @@ private:
 		bool FollowCursor();
 
 	class AFurniture* SelectedFurniture;
+
+	FVector LocationBeforeZooming;
+	float CameraZoomBeforeZooming;
 };

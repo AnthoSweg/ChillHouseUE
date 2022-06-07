@@ -3,6 +3,9 @@
 
 #include "Plant.h"
 #include "Pot.h"
+#include "NiagaraCommon.h"
+#include "NiagaraFunctionLibrary.h"
+#include "Kismet/GameplayStatics.h"
 #include "ChillHouseGameMode.h"
 
 APlant::APlant()
@@ -30,12 +33,13 @@ void APlant::BeginPlay()
 void APlant::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	if (IsInGoodCondition())
+	if (IsInGoodCondition() == 0)
 	{
 		GameMode->GainCurrency(CurrencyGainedPerSeconds * DeltaTime);
 	}
 
-	WaterLevel -= .5f;
+	WaterLevel -= WaterDecreaseRate * DeltaTime;
+	if (WaterLevel < 0) WaterLevel = 0;
 }
 
 void APlant::ChangePot(bool GetNextOne)
@@ -75,18 +79,26 @@ void APlant::RelocatePlant()
 void APlant::WaterPlant()
 {
 	WaterLevel += 10.f;
+	FVector RainLocation = GetActorLocation();
+	RainLocation.Z += 100;
+	UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), GameMode->RainParticle, RainLocation, FRotator(0, 0, 0), FVector(1, 1, 1), true, true, ENCPoolMethod::None, false);
+
 }
 
-bool APlant::IsInGoodCondition()
+//0 means everything's ok, other number define the problem
+int APlant::IsInGoodCondition()
 {
 	if ((uint8)LightReceived < (uint8)LightNeeded)
-		return false;
+		return 1;
 
 	if ((uint8)PotSize < (uint8)PlantSize)
-		return false;
+		return 2;
 
-	if (WaterLevel < WaterNeeded - 40 && WaterLevel > WaterNeeded + 20)
-		return false;
+	if (WaterLevel < WaterNeeded - 40 || WaterLevel <= 0)
+		return 3;
 
-	return true;
+	if (WaterLevel > WaterNeeded + 15)
+		return 4;
+
+	return 0;
 }

@@ -19,7 +19,10 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<FPot> Pots;
+	UPROPERTY(EditAnywhere)
+		class UNiagaraSystem* RainParticle;
 
 private:
 	float Currency;
+
 };

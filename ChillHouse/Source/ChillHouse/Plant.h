@@ -47,6 +47,9 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 		TEnumAsByte<LightLevel> LightNeeded;
 
+	UPROPERTY(BlueprintReadOnly)
+	float WaterLevel;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 		class UStaticMeshComponent* PotMesh;
 
@@ -56,6 +59,8 @@ public:
 		void ChangePot(bool GetNextOne);
 	void SwitchPot(FPot NewPot);
 	void RelocatePlant();
+	UFUNCTION(BlueprintCallable)
+		void WaterPlant();
 
 private:
 
@@ -66,13 +71,11 @@ private:
 
 	FPot Pot;
 	int PotIndex;
-
-	float WaterLevel;
 	UPROPERTY(EditDefaultsOnly)
 		float WaterNeeded;
+	UPROPERTY(EditDefaultsOnly)
+		float WaterDecreaseRate = .5f;
 
-	UFUNCTION(BlueprintCallable)
-		void WaterPlant();
-
-	bool IsInGoodCondition();
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	int IsInGoodCondition();
 };

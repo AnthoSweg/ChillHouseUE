@@ -287,10 +287,25 @@ void AChillHousePawn::AccessPlantMenu()
 			if (HitPlant != nullptr)
 			{
 				Controller->OpenPlantMenu(HitPlant);
+				ZoomOnPlant(HitPlant);
 			}
-
 		}
 	}
+}
+
+void AChillHousePawn::ZoomOnPlant(APlant* Plant)
+{
+	CameraZoomBeforeZooming = CurrentZoom;
+	LocationBeforeZooming = Pivot->GetComponentLocation();
+
+	CurrentZoom = CameraZoomMinMax.X;
+	Pivot->SetWorldLocation(Plant->GetActorLocation());
+}
+
+void AChillHousePawn::Unzoom()
+{
+	CurrentZoom = CameraZoomBeforeZooming;
+	Pivot->SetWorldLocation(LocationBeforeZooming);
 }
 
 void AChillHousePawn::CTRLPressed()
